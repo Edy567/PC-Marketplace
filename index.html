@@ -16,20 +16,19 @@
     <link rel="apple-touch-icon" sizes="180x180" href="./resurse/imagini/favicon/apple-touch-icon.png" />
     <link rel="manifest" href="./resurse/imagini/favicon/site.webmanifest" />
     <link rel="stylesheet" href="resurse.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
 </head>
 
 <body>
     <header>
-        <h1> PC </h1>
+        <h1> PC marketplace <i class="fa-solid fa-computer"></i> </h1>
 
         <nav>
-            <ul>
-                <li> Acasa
-                    <ul>
+            <ul class = "meniu">
+                <li> Acasa</li>
                         <li> <a href="#welcome">Bine ati venit </a></li>
                         <li> <a href="#promotii">Promotii </a></li>
                         <li> <a href="#orar"> Orar </a></li>
-                    </ul>
                 </li>
                 <li> <a href="#produse"> Produse </a>
                     <dl>
@@ -49,27 +48,41 @@
                     <p class="subtitlu"> </p>
                 </hgroup>
 
+                
+               <a href="https://en.wikipedia.org/wiki/Personal_computer" >Citește despre PC-uri</a>
+               <wbr> <a  href="https://en.wikipedia.org/wiki/Personal_computer"> Acelasi site, alt link </a> 
+
                 <p class="intro"> Bun venit in marketplace-ul nostru. Avem o gama larga de produse etc ( completeaza aici ) </p>
 
                 <figure>
                     <picture>
                         <source srcset="./resurse/imagini/download-200x200.jfif" media="(max-width:700px)" />
                         <source srcset="./resurse/imagini/download.jfif" media="(max-width:1200px)" />
-                        <img src="./resurse/imagini/download-640x360.jfif" alt="Imagine de bun venit" />
+                        <img src="./resurse/imagini/download-640x360.jfif" alt="Imagine de bun venit" title = "img 1" />
                     </picture>
                     <figcaption> Descriere imagine </figcaption>
                 </figure>
             </section>
 
+            <section id="catalog-pdf">
+    <h3>Catalogul nostru de produse (PDF)</h3>
+    <object data="./resurse/documente/catalog.pdf" type="application/pdf" width="100" height="600">
+        <p>Browserul tău nu suportă afișarea PDF-urilor. 
+           <a href="./resurse/documente/catalog.pdf" download>Descarcă PDF-ul de aici</a>.
+        </p>
+
+    </object>
+</section>
             <section id="promotii">
-                <h2>Promoții și oferte</h2>
+               
                 <hgroup>
+                     <h2>Promoții și oferte</h2>
                     <p>Pana la 50%!!</p>
                 </hgroup>
                 
                 <article>
                     <h3 class="titlu"></h3>
-                    <p><b> Marketplace-ul nostru</b> oferă <b>reduceri intre <ins>15%-50%</ins></b> pentru toate produsele cumpărate în intervalul 10-14.</p>
+                    <p><b> Marketplace-ul nostru</b> oferă <b>reduceri de <s>10%</s> <ins>15%-50%</ins></b> pentru toate produsele cumpărate în intervalul 10-14.</p>
                     <p>Oferta este valabilă doar în intervalul 17-19 martie.</p>
                 </article>
                 
@@ -81,15 +94,17 @@
                     <ol>
                         <li> GPU
                             <dl> 
-                                <dt>Model 1</dt>
-                                <dt>Model 2</dt>
-                                <dt>Model 3</dt>
+                                <dt>Modele </dt>
+                                <dd>Model 1</dd>
+                                <dd>Model 2</dd>
+                                 <dd>Model 3</dd>
                             </dl>
                         </li>
                         <li> <i> RAM </i>
-                            <dl> 
-                                <dt>16 GB</dt>
-                                <dt>32 GB</dt>
+                            <dl>
+                                <dt> Tipuri de RAM</dt> 
+                                <dd>16 GB</dd>
+                                <dd>32 GB</dd>
                             </dl>
                         </li>
                         <li> Cooler </li>
@@ -112,7 +127,7 @@
             <section id="produse">
                 <h2>Produsele noastre</h2>
                 <section>
-                    <h3>CPU-uri </h3>
+                    <h3>CPU-uri <dfn> (Central proccessing unit) </dfn> </h3>
                     <ul>
                         <li>CPU 1 </li>
                         <li>CPU 2</li>
@@ -128,7 +143,8 @@
                 <section>
                     <h3>Laptopuri</h3>
                     <hgroup> 
-                        <p>De gaming</p>
+                      
+                        <h3>De gaming</h3>
                     </hgroup>
                     <ul>
                         <li>Laptop1</li>
@@ -139,7 +155,7 @@
                     <meter id="stoc-laptopuri-gaming" min="0" max="100" low="20" high="80" value="100" optimum="100"></meter>
 
                     <hgroup> 
-                        <p>Office</p> 
+                        <h3>Office</h3> 
                     </hgroup>
                     <ul>
                         <li>Laptop1</li>
@@ -150,6 +166,7 @@
                     </ul>
                     <label for="stoc-laptopuri-office"> Stoc Laptop-uri office </label>
                     <meter id="stoc-laptopuri-office" min="0" max="100" low="20" high="80" value="50" optimum="100"></meter>
+                
                 </section>
                 
                 <section>
@@ -187,6 +204,7 @@
             <section id="orar">
                 <h2>Orar</h2>
                 <table id="tab-orar">
+                          <caption>Orarul nostru de funcționare și ridicare comenzi</caption>
                     <thead>
                         <tr>
                             <th>Cod</th>
@@ -198,6 +216,7 @@
                         </tr>
                     </thead>
                     <tbody>
+                  
                         <tr>
                             <td></td>
                             <td rowspan="5">Zile<br />Lucrătoare</td>
@@ -254,12 +273,15 @@
                         <tr>
                             <td colspan="6">Închis cu ocazia sărbătorilor legale.</td>
                         </tr>
+                        
                     </tfoot>
                 </table>
 
                 <ol>
-                    <li> <time datetime="2026-02-28 17:00"> Eveniment 1</time></li>
+                    <li> <time datetime="2026-02-28 17:00"> <b> Lansare RTX 5090</b>  Eveniment 1</time></li>
                 </ol>
+
+                <details> <summary>Precizari1</summary> </details>
             </section>
 
             <section id="videoclipuri">
@@ -277,20 +299,47 @@
                     </iframe>
                 </div>
             </section>
+                
+            <section id="contact-locatie">
+    <h3>Unde ne găsești</h3>
+    <p>Adresa facultății / sediului nostru:</p>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2848.843653118933!2d26.097549076629735!3d44.43635320409893!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1ff4770023b8f%3A0xcb1b55979bb88d8b!2sFacultatea%20de%20Matematic%C4%83%20%C8%99i%20Informatic%C4%83!5e0!3m2!1sen!2sro!4v1700000000000!5m2!1sen!2sro" 
+        width="600" 
+        height="450" 
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+</section>
 
         </div>
     
-    <div> 
-        <map> 
-            Ne gasiti la locatia
-        </map>
-    </div>
+  
     </main>
 
     <footer>
-        <a href="#welcome"> Inapoi la bun venit </a>
-        <small> Copyright &copy; 2026 Fieraru Edward-Alexandru</small>
+        
+    <a href="#welcome"> Inapoi la bun venit </a>
+    <small> Copyright &copy; 
+        <time datetime="2026">2026</time> Fieraru Edward-Alexandru</small>
+
+
+      <address>
+    Telefon: <a href="tel:+40700000000">0700 000 000</a> <br>
+
+    Adresă: 
+    <a href="https://maps.app.goo.gl/3q4aVwE1M2o3B7qA9" >
+        Strada Fictivă nr. 10,<br>
+        București, Sector 1
+    </a> <br>
+
+    E-mail: <a href="mailto:contact@pc-marketplace.ro">contact@pc-marketplace.ro</a> <br>
+
+    WhatsApp: <a href="https://wa.me/40700000000" >Lasă-ne un mesaj</a>
+</address>
     </footer>
+    
 </body>
 
 </html>
