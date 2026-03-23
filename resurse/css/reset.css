@@ -1,0 +1,40 @@
+:root {
+    --reset-font-baza: 16px;
+    --reset-spatiu-zero: 0;
+    --reset-grosime-bold: 700;
+}
+
+html, body {
+    margin: 0px;
+    padding: 0px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+h1, h2, h3, h4, h5, h6, p, figure, blockquote, dl, dd {
+    margin: var(--reset-spatiu-zero);
+    padding: var(--reset-spatiu-zero);
+}
+
+ul, ol {
+    margin: var(--reset-spatiu-zero);
+    padding: var(--reset-spatiu-zero);
+    list-style: none;
+}
+
+b, strong {
+    font-weight: var(--reset-grosime-bold);
+}
+
+i, em {
+    font-style: italic;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: var(--reset-spatiu-zero);
+}

@@ -1,0 +1,389 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+:root {
+  --culoare-back-main: #210638;
+  --culoare-text: #f5f5f5;
+  --culoare-accent: #8E2FE0;
+  --culoare-contur: #544561;
+  --culoare-back-sec: #333036;
+  --culoare-border-sectiuni: #00FFFF;
+  
+  --spatiere-pagina: 8vw;
+  --gap-grid: 20px;
+  --padding-sectiuni: 20px;
+}
+
+html {
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+    transition: font-size 0.3s ease;
+    background-color: var(--culoare-back-main);
+    color: var(--culoare-text);
+}
+
+body {
+    margin-left: var(--spatiere-pagina);
+    margin-right: var(--spatiere-pagina);
+}
+
+img, video, iframe, object, picture {
+    width: 100%;
+    max-width: 100%;
+    min-width: 200px;
+    height: auto;
+    display: block;
+}
+
+#grid-pagina {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-areas:
+    "zona1 zona1 zona1"
+    "zona5 zona6 zona7"
+    "zona3 zona2 zona2"
+    "zona4 zona2 zona2"
+    "zona8 zona8 zona8";
+  gap: var(--gap-grid);
+  padding: var(--padding-sectiuni);
+}
+
+#grid-pagina > section {
+  border: 3px solid var(--culoare-border-sectiuni);
+  background-color: var(--culoare-back-sec);
+  padding: var(--padding-sectiuni);
+  border-radius: 8px;
+}
+
+#welcome { grid-area: zona1; }
+#orar { grid-area: zona2; }
+#calendar-evenimente { grid-area: zona3; }
+#anunturi { grid-area: zona4; }
+#useri-online { grid-area: zona5; }
+#statistici { grid-area: zona6; }
+#date-server { grid-area: zona7; }
+#diverse { grid-area: zona8; }
+
+#catalog-pdf object {
+    width: 100%;
+    min-height: 500px;
+}
+
+iframe {
+    width: 100%;
+    min-height: 300px;
+}
+
+#tab-orar {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#tab-orar caption {
+    caption-side: bottom;
+    padding-top: var(--padding-sectiuni);
+}
+
+#tab-orar th, #tab-orar td {
+    border: 1px solid var(--culoare-contur);
+    padding: 10px;
+    text-align: center;
+}
+
+#tab-orar th:nth-child(even), #tab-orar td:nth-child(even) {
+    border-right: 2px solid var(--culoare-border-sectiuni);
+}
+
+#tab-orar th:nth-child(odd), #tab-orar td:nth-child(odd) {
+    border-right: 2px solid var(--culoare-accent);
+}
+
+#tab-orar thead {
+    border-bottom: 3px solid var(--culoare-border-sectiuni);
+}
+
+#tab-orar tfoot {
+    border-top: 3px solid var(--culoare-border-sectiuni);
+}
+
+#tab-orar tbody tr {
+    transition: box-shadow 0.5s ease;
+}
+
+#tab-orar tbody tr:hover {
+    box-shadow: inset 0 0 20px 5px var(--culoare-accent);
+}
+
+.container-iframe {
+    display: flex;
+    flex-direction: column;
+}
+
+.taburi-iframe {
+    display: flex;
+}
+
+.taburi-iframe a {
+    flex: 1;
+    text-align: center;
+    border: 1px solid var(--culoare-contur);
+    text-decoration: none;
+    color: var(--culoare-text);
+    padding: 5px;
+}
+
+.taburi-iframe a:hover, .taburi-iframe a:focus {
+    background-color: var(--culoare-accent);
+    color: var(--culoare-back-main);
+}
+
+footer {
+    background-color: var(--culoare-back-sec);
+    text-align: center;
+    padding: var(--padding-sectiuni);
+    margin-top: var(--gap-grid);
+    border: 3px solid var(--culoare-border-sectiuni);
+    border-radius: 8px;
+}
+
+footer address {
+    font-style: normal;
+    line-height: 1.6;
+    margin-top: 15px;
+}
+
+footer address a, footer > a:not([href="#welcome"]) {
+    color: var(--culoare-accent);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer address a:hover, footer > a:not([href="#welcome"]):hover {
+    color: var(--culoare-border-sectiuni);
+}
+
+footer a[href="#welcome"] {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    width: 45px;
+    height: 45px;
+    background-color: var(--culoare-back-sec);
+    border: 3px solid var(--culoare-contur);
+    border-radius: 12px;
+    transform: rotate(45deg);
+    opacity: 0.6;
+    transition: all 0.5s ease;
+    font-size: 0;
+    text-decoration: none;
+    z-index: 1000;
+}
+
+footer a[href="#welcome"]:hover {
+    opacity: 1;
+    background-color: var(--culoare-accent);
+    border-color: var(--culoare-border-sectiuni);
+}
+
+footer a[href="#welcome"]::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 15px solid var(--culoare-border-sectiuni);
+    transition: border-bottom-color 0.5s ease;
+}
+
+footer a[href="#welcome"]:hover::before {
+    border-bottom-color: var(--culoare-text);
+}
+
+footer a[href="#welcome"]::after {
+    content: "inapoi";
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg) translate(0px, 45px);
+    background-color: var(--culoare-back-sec);
+    color: var(--culoare-text);
+    padding: 5px 8px;
+    border: 1px solid var(--culoare-contur);
+    border-radius: 5px;
+    font-size: 14px;
+    white-space: nowrap;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    pointer-events: none;
+}
+
+footer a[href="#welcome"]:hover::after {
+    visibility: visible;
+    opacity: 1;
+}
+
+@media screen and (max-width: 1200px) {
+    :root {
+        --spatiere-pagina: 4vw;
+        --gap-grid: 15px;
+        --padding-sectiuni: 15px;
+    }
+    
+    html { font-size: 18px; }
+    
+    #grid-pagina {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: 
+            "zona1 zona1"
+            "zona5 zona6"
+            "zona7 zona3"
+            "zona2 zona2"
+            "zona4 zona8";
+    }
+
+    #orar {
+        overflow-x: auto;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    :root {
+        --spatiere-pagina: 2vw;
+        --gap-grid: 10px;
+        --padding-sectiuni: 10px;
+    }
+
+    html { font-size: 16px; }
+    
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+    
+    #grid-pagina {
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+            "zona1"
+            "zona5"
+            "zona6"
+            "zona7"
+            "zona3"
+            "zona2"
+            "zona4"
+            "zona8";
+    }
+    
+    #orar {
+        overflow-x: auto;
+    }
+}
+
+@media print {
+    body::before {
+        content: "Fieraru \A Edward-Alexandru";
+        white-space: pre-wrap;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 60%;
+        height: 10%;
+        color: black;
+        opacity: 0.3;
+        text-align: center;
+        z-index: 9999;
+        pointer-events: none;
+    }
+
+    body::after {
+        content: "Acesta este un proiect școlar!";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 50%;
+        border: 3px double black;
+        text-align: center;
+        padding: 10px;
+    }
+    
+    img, video, iframe, object, picture, footer a[href="#welcome"] {
+        display: none !important;
+    }
+    
+    #grid-pagina {
+        display: block;
+    }
+    
+    #grid-pagina > section {
+        display: block;
+        margin-bottom: 20px;
+        page-break-inside: avoid;
+    }
+    
+    a {
+        text-decoration: none !important;
+        color: black !important;
+    }
+    
+    h1 {
+        text-align: center;
+    }
+    
+    ul.meniu {
+        display: block;
+    }
+    
+    ul.meniu::after {
+        content: "";
+        display: block;
+        page-break-after: always;
+    }
+    
+    footer {
+        page-break-before: always;
+    }
+    
+    @page :left {
+        margin: 2cm 1cm 2cm 2cm;
+    }
+    
+    @page :right {
+        margin: 2cm 2cm 2cm 1cm;
+    }
+}
+
+math {
+    font-size: 1.5rem;
+    display: block;
+    margin: 1.5rem 0;
+    background-color: var(--culoare-back-main);
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--culoare-contur);
+}
+
+math mi {
+    color: var(--culoare-border-sectiuni);
+    font-style: italic;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+math mo {
+    color: var(--culoare-accent);
+    font-size: 1.3em;
+    padding: 0 0.3rem;
+}
+
+math mn {
+    color: var(--culoare-text);
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+math msub mi:first-child {
+    font-size: 1.4em;
+    color: var(--culoare-text);
+}

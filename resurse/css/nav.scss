@@ -1,0 +1,138 @@
+ul.meniu > li {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+ul.meniu > li::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: linear-gradient(to right, black, white);
+    transition: width 0.4s linear;
+    z-index: -1;
+}
+
+ul.meniu > li:hover::before {
+    width: 100%;
+}
+
+ul.meniu > li > dl {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    transform: scaleY(0);
+    transform-origin: top center;
+    transition: transform 0.3s linear;
+    background-color: var(--culoare-background);
+    width: 100%;
+}
+
+ul.meniu > li:hover > dl {
+    transform: scaleY(1);
+}
+
+ul.meniu > li > dl:hover {
+    background-color: black;
+    color: white;
+}
+
+%hamburger-line {
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background-color: black;
+}
+
+.hamburger {
+    display: none;
+    position: relative;
+    width: 35px;
+    height: 25px;
+}
+
+.hamburger div {
+    @extend %hamburger-line;
+}
+
+@keyframes hamburgerAnim {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(0.8); opacity: 0.5; }
+}
+
+@media screen and (max-width: 1200px) {
+    ul.meniu > li:first-child {
+        font-size: 0;
+    }
+    ul.meniu > li:first-child::after {
+        content: "\f015";
+        font-family: "FontAwesome";
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    ul.meniu {
+        display: none;
+    }
+    .hamburger {
+        display: block;
+    }
+    @for $i from 1 through 3 {
+        .hamburger div:nth-child(#{$i}) {
+            top: ($i - 1) * 10px;
+            animation: hamburgerAnim 1s ease ($i * 0.3s) infinite alternate;
+        }
+    }
+}
+
+.hamburger {
+    display: none;
+    position: relative;
+    width: 40px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.hamburger div {
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    left: 0;
+    opacity: 0; 
+}
+
+@keyframes aparitieHamburger {
+    0% {
+        transform: scale(0.2) rotate(-90deg);
+        background-color: var(--culoare-background);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.2) rotate(10deg);
+        background-color: var(--culoare-accent);
+        opacity: 0.6;
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+        background-color: var(--culoare-text);
+        opacity: 1;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+    
+    @for $i from 1 through 3 {
+        .hamburger div:nth-child(#{$i}) {
+            top: ($i - 1) * 12px;
+            animation: aparitieHamburger 0.8s ease forwards;
+            animation-delay: $i * 300ms;
+        }
+    }
+}
