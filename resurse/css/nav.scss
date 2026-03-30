@@ -1,138 +1,213 @@
-ul.meniu > li {
+
+$tablet: 1200px;
+$mobile: 768px;
+
+%flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav {
     position: relative;
-    overflow: hidden;
-    z-index: 1;
-}
+    z-index: 100;
 
-ul.meniu > li::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 100%;
-    background: linear-gradient(to right, black, white);
-    transition: width 0.4s linear;
-    z-index: -1;
-}
-
-ul.meniu > li:hover::before {
-    width: 100%;
-}
-
-ul.meniu > li > dl {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    transform: scaleY(0);
-    transform-origin: top center;
-    transition: transform 0.3s linear;
-    background-color: var(--culoare-background);
-    width: 100%;
-}
-
-ul.meniu > li:hover > dl {
-    transform: scaleY(1);
-}
-
-ul.meniu > li > dl:hover {
-    background-color: black;
-    color: white;
-}
-
-%hamburger-line {
-    position: absolute;
-    width: 100%;
-    height: 4px;
-    background-color: black;
-}
-
-.hamburger {
-    display: none;
-    position: relative;
-    width: 35px;
-    height: 25px;
-}
-
-.hamburger div {
-    @extend %hamburger-line;
-}
-
-@keyframes hamburgerAnim {
-    0% { transform: scale(1); opacity: 1; }
-    100% { transform: scale(0.8); opacity: 0.5; }
-}
-
-@media screen and (max-width: 1200px) {
-    ul.meniu > li:first-child {
-        font-size: 0;
-    }
-    ul.meniu > li:first-child::after {
-        content: "\f015";
-        font-family: "FontAwesome";
-        font-size: 16px;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    ul.meniu {
+    .menu-checkbox {
         display: none;
     }
+
     .hamburger {
-        display: block;
+        display: none;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 30px;
+        height: 25px;
+        cursor: pointer;
+        
+        .linie {
+            width: 100%;
+            height: 3px;
+            background-color: var(--culoare-accent);
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        
+        @for $i from 1 through 3 {
+            .linie:nth-child(#{$i}) {
+                animation: intrare-linii 0.5s ease backwards;
+                animation-delay: #{$i * 0.1}s;
+            }
+        }
     }
-    @for $i from 1 through 3 {
-        .hamburger div:nth-child(#{$i}) {
-            top: ($i - 1) * 10px;
-            animation: hamburgerAnim 1s ease ($i * 0.3s) infinite alternate;
+
+    ul.meniu {
+        @extend %flex-center;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        background-color: var(--culoare-back-sec);
+        border: 2px solid var(--culoare-border-sectiuni);
+        border-radius: 8px;
+
+        > li {
+            position: relative;
+            
+            > a {
+                display: block;
+                padding: 15px 25px;
+                color: var(--culoare-text);
+                text-decoration: none;
+                font-weight: bold;
+                position: relative;
+                overflow: hidden;
+                z-index: 1;
+
+                
+                &::before {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 200%; 
+                    height: 100%;
+                    
+                    background: linear-gradient(to right, transparent 50%, var(--culoare-accent) 50%);
+                    background-size: 200% 100%;
+                    background-position: left bottom;
+                    transition: background-position 0.4s ease;
+                    z-index: -1;
+                }
+            }
+
+            &:hover > a {
+                color: var(--culoare-back-main);
+                
+                &::before {
+                    background-position: right bottom; 
+                }
+            }
+
+            ul.submeniu {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                min-width: 200px;
+                background-color: var(--culoare-back-main);
+                border: 2px solid var(--culoare-contur);
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                
+                transform: scaleY(0);
+                transform-origin: top center;
+                transition: transform 0.3s ease-in-out;
+
+                li a {
+                    display: block;
+                    padding: 12px 20px;
+                    color: var(--culoare-text);
+                    text-decoration: none;
+                    transition: all 0.3s ease;
+
+                    &:hover {
+                        background-color: var(--culoare-border-sectiuni);
+                        color: var(--culoare-back-main);
+                    }
+                }
+            }
+
+            &:hover ul.submeniu {
+                transform: scaleY(1);
+            }
         }
     }
 }
 
-.hamburger {
-    display: none;
-    position: relative;
-    width: 40px;
-    height: 30px;
-    cursor: pointer;
+
+@keyframes intrare-linii {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
 }
 
-.hamburger div {
-    position: absolute;
-    width: 100%;
-    height: 4px;
-    left: 0;
-    opacity: 0; 
-}
+@media screen and (max-width: $tablet) {
+    nav ul.meniu > li > a {
+        font-size: 0.85rem;
+        padding: 15px 15px;
+    }
 
-@keyframes aparitieHamburger {
-    0% {
-        transform: scale(0.2) rotate(-90deg);
-        background-color: var(--culoare-background);
-        opacity: 0;
-    }
-    50% {
-        transform: scale(1.2) rotate(10deg);
-        background-color: var(--culoare-accent);
-        opacity: 0.6;
-    }
-    100% {
-        transform: scale(1) rotate(0deg);
-        background-color: var(--culoare-text);
-        opacity: 1;
+    nav ul.meniu > li.nav-home > a {
+        font-size: 0; 
+        
+        &::after {
+            content: "\f015"; 
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            font-size: 1.2rem;
+        }
     }
 }
 
-@media screen and (max-width: 768px) {
-    .hamburger {
-        display: block;
-    }
-    
-    @for $i from 1 through 3 {
-        .hamburger div:nth-child(#{$i}) {
-            top: ($i - 1) * 12px;
-            animation: aparitieHamburger 0.8s ease forwards;
-            animation-delay: $i * 300ms;
+@media screen and (max-width: $mobile) {
+    nav {
+        .hamburger {
+            display: flex; 
+        }
+
+        ul.meniu {
+            display: none; 
+            flex-direction: column;
+            position: absolute;
+            top: 40px;
+            left: 0;
+            width: 100%;
+            
+            > li {
+                width: 100%;
+                
+                > a {
+                    text-align: center;
+                    
+                    &::before { display: none; }
+                    
+                    &:hover {
+                        background-color: var(--culoare-accent);
+                        color: var(--culoare-back-main);
+                    }
+                }
+
+                ul.submeniu {
+                    position: static;
+                    width: 100%;
+                    transform: none; 
+                    display: none; 
+                    opacity: 0;
+                    transform: rotateX(-90deg);
+                    transform-origin: top center;
+                    transition: opacity 0.4s ease, transform 0.4s ease;
+                }
+
+                &:hover ul.submeniu {
+                    display: block;
+                    opacity: 1;
+                    transform: rotateX(0deg);
+                }
+            }
+        }
+
+        .menu-checkbox:checked ~ ul.meniu {
+            display: flex;
+        }
+
+        
+        .menu-checkbox:checked ~ .hamburger .linie:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+        .menu-checkbox:checked ~ .hamburger .linie:nth-child(2) {
+            opacity: 0;
+        }
+        .menu-checkbox:checked ~ .hamburger .linie:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
         }
     }
 }

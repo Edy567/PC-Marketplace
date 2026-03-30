@@ -1,149 +1,187 @@
-ul.meniu > li {
+nav ul.meniu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav {
+  position: relative;
+  z-index: 100;
+}
+nav .menu-checkbox {
+  display: none;
+}
+nav .hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 25px;
+  cursor: pointer;
+}
+nav .hamburger .linie {
+  width: 100%;
+  height: 3px;
+  background-color: var(--culoare-accent);
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+nav .hamburger .linie:nth-child(1) {
+  animation: intrare-linii 0.5s ease backwards;
+  animation-delay: 0.1s;
+}
+nav .hamburger .linie:nth-child(2) {
+  animation: intrare-linii 0.5s ease backwards;
+  animation-delay: 0.2s;
+}
+nav .hamburger .linie:nth-child(3) {
+  animation: intrare-linii 0.5s ease backwards;
+  animation-delay: 0.3s;
+}
+nav ul.meniu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background-color: var(--culoare-back-sec);
+  border: 2px solid var(--culoare-border-sectiuni);
+  border-radius: 8px;
+}
+nav ul.meniu > li {
+  position: relative;
+}
+nav ul.meniu > li > a {
+  display: block;
+  padding: 15px 25px;
+  color: var(--culoare-text);
+  text-decoration: none;
+  font-weight: bold;
   position: relative;
   overflow: hidden;
   z-index: 1;
 }
-
-ul.meniu > li::before {
+nav ul.meniu > li > a::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
-  width: 0;
+  width: 200%;
   height: 100%;
-  background: linear-gradient(to right, black, white);
-  transition: width 0.4s linear;
+  background: linear-gradient(to right, transparent 50%, var(--culoare-accent) 50%);
+  background-size: 200% 100%;
+  background-position: left bottom;
+  transition: background-position 0.4s ease;
   z-index: -1;
 }
-
-ul.meniu > li:hover::before {
-  width: 100%;
+nav ul.meniu > li:hover > a {
+  color: var(--culoare-back-main);
 }
-
-ul.meniu > li > dl {
+nav ul.meniu > li:hover > a::before {
+  background-position: right bottom;
+}
+nav ul.meniu > li ul.submeniu {
   position: absolute;
   top: 100%;
   left: 0;
+  min-width: 200px;
+  background-color: var(--culoare-back-main);
+  border: 2px solid var(--culoare-contur);
+  list-style: none;
+  padding: 0;
+  margin: 0;
   transform: scaleY(0);
   transform-origin: top center;
-  transition: transform 0.3s linear;
-  background-color: var(--culoare-background);
-  width: 100%;
+  transition: transform 0.3s ease-in-out;
 }
-
-ul.meniu > li:hover > dl {
+nav ul.meniu > li ul.submeniu li a {
+  display: block;
+  padding: 12px 20px;
+  color: var(--culoare-text);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+nav ul.meniu > li ul.submeniu li a:hover {
+  background-color: var(--culoare-border-sectiuni);
+  color: var(--culoare-back-main);
+}
+nav ul.meniu > li:hover ul.submeniu {
   transform: scaleY(1);
 }
 
-ul.meniu > li > dl:hover {
-  background-color: black;
-  color: white;
-}
-
-.hamburger div {
-  position: absolute;
-  width: 100%;
-  height: 4px;
-  background-color: black;
-}
-
-.hamburger {
-  display: none;
-  position: relative;
-  width: 35px;
-  height: 25px;
-}
-
-@keyframes hamburgerAnim {
-  0% {
-    transform: scale(1);
-    opacity: 1;
+@keyframes intrare-linii {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
   }
-  100% {
-    transform: scale(0.8);
-    opacity: 0.5;
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 @media screen and (max-width: 1200px) {
-  ul.meniu > li:first-child {
+  nav ul.meniu > li > a {
+    font-size: 0.85rem;
+    padding: 15px 15px;
+  }
+  nav ul.meniu > li.nav-home > a {
     font-size: 0;
   }
-  ul.meniu > li:first-child::after {
+  nav ul.meniu > li.nav-home > a::after {
     content: "\f015";
-    font-family: "FontAwesome";
-    font-size: 16px;
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    font-size: 1.2rem;
   }
 }
 @media screen and (max-width: 768px) {
-  ul.meniu {
+  nav .hamburger {
+    display: flex;
+  }
+  nav ul.meniu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 100%;
+  }
+  nav ul.meniu > li {
+    width: 100%;
+  }
+  nav ul.meniu > li > a {
+    text-align: center;
+  }
+  nav ul.meniu > li > a::before {
     display: none;
   }
-  .hamburger {
+  nav ul.meniu > li > a:hover {
+    background-color: var(--culoare-accent);
+    color: var(--culoare-back-main);
+  }
+  nav ul.meniu > li ul.submeniu {
+    position: static;
+    width: 100%;
+    transform: none;
+    display: none;
+    opacity: 0;
+    transform: rotateX(-90deg);
+    transform-origin: top center;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+  nav ul.meniu > li:hover ul.submeniu {
     display: block;
+    opacity: 1;
+    transform: rotateX(0deg);
   }
-  .hamburger div:nth-child(1) {
-    top: 0px;
-    animation: hamburgerAnim 1s ease 0.3s infinite alternate;
+  nav .menu-checkbox:checked ~ ul.meniu {
+    display: flex;
   }
-  .hamburger div:nth-child(2) {
-    top: 10px;
-    animation: hamburgerAnim 1s ease 0.6s infinite alternate;
+  nav .menu-checkbox:checked ~ .hamburger .linie:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
   }
-  .hamburger div:nth-child(3) {
-    top: 20px;
-    animation: hamburgerAnim 1s ease 0.9s infinite alternate;
-  }
-}
-.hamburger {
-  display: none;
-  position: relative;
-  width: 40px;
-  height: 30px;
-  cursor: pointer;
-}
-
-.hamburger div {
-  position: absolute;
-  width: 100%;
-  height: 4px;
-  left: 0;
-  opacity: 0;
-}
-
-@keyframes aparitieHamburger {
-  0% {
-    transform: scale(0.2) rotate(-90deg);
-    background-color: var(--culoare-background);
+  nav .menu-checkbox:checked ~ .hamburger .linie:nth-child(2) {
     opacity: 0;
   }
-  50% {
-    transform: scale(1.2) rotate(10deg);
-    background-color: var(--culoare-accent);
-    opacity: 0.6;
-  }
-  100% {
-    transform: scale(1) rotate(0deg);
-    background-color: var(--culoare-text);
-    opacity: 1;
-  }
-}
-@media screen and (max-width: 768px) {
-  .hamburger {
-    display: block;
-  }
-  .hamburger div:nth-child(1) {
-    top: 0px;
-    animation: aparitieHamburger 0.8s ease forwards;
-    animation-delay: 300ms;
-  }
-  .hamburger div:nth-child(2) {
-    top: 12px;
-    animation: aparitieHamburger 0.8s ease forwards;
-    animation-delay: 600ms;
-  }
-  .hamburger div:nth-child(3) {
-    top: 24px;
-    animation: aparitieHamburger 0.8s ease forwards;
-    animation-delay: 900ms;
+  nav .menu-checkbox:checked ~ .hamburger .linie:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
   }
 }/*# sourceMappingURL=nav.css.map */

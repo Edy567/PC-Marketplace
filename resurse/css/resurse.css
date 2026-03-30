@@ -279,8 +279,19 @@ footer a[href="#welcome"]:hover::after {
         overflow-x: auto;
     }
 }
-
 @media print {
+    @page :left {
+        margin: 2cm 1cm 2cm 2cm;
+    }
+
+    @page :right {
+        margin: 2cm 2cm 2cm 1cm;
+    }
+
+    body {
+        position: relative;
+    }
+
     body::before {
         content: "Fieraru \A Edward-Alexandru";
         white-space: pre-wrap;
@@ -290,15 +301,13 @@ footer a[href="#welcome"]:hover::after {
         transform: translate(-50%, -50%);
         width: 60%;
         height: 10%;
-        color: black;
-        opacity: 0.3;
+        color: rgba(0, 0, 0, 0.3);
         text-align: center;
-        z-index: 9999;
-        pointer-events: none;
+        font-size: 2rem;
+        z-index: -1;
     }
 
-    body::after {
-        content: "Acesta este un proiect școlar!";
+    footer p {
         position: absolute;
         top: 0;
         right: 0;
@@ -306,51 +315,59 @@ footer a[href="#welcome"]:hover::after {
         border: 3px double black;
         text-align: center;
         padding: 10px;
+        margin: 0;
+        color: black;
+        background: transparent;
     }
-    
-    img, video, iframe, object, picture, footer a[href="#welcome"] {
+
+    img, video, iframe, object, picture, figure, figcaption, footer a[href="#welcome"], .hamburger, .menu-checkbox {
         display: none !important;
     }
-    
-    #grid-pagina {
-        display: block;
-    }
-    
-    #grid-pagina > section {
-        display: block;
-        margin-bottom: 20px;
-        page-break-inside: avoid;
-    }
-    
+
     a {
-        text-decoration: none !important;
         color: black !important;
+        text-decoration: none !important;
     }
-    
+
+    #grid-pagina {
+        display: block !important;
+    }
+
+    #grid-pagina > section {
+        display: block !important;
+        page-break-inside: avoid;
+        border: none;
+        background: transparent;
+        box-shadow: none;
+    }
+
     h1 {
         text-align: center;
     }
-    
-    ul.meniu {
-        display: block;
+
+    nav, ul.meniu, ul.meniu ul, ul.submeniu {
+        display: block !important;
+        position: static !important;
+        transform: none !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        border: none !important;
+        background: transparent !important;
     }
-    
-    ul.meniu::after {
-        content: "";
-        display: block;
+
+    ul.meniu li {
+        display: block !important;
+        margin-bottom: 5px;
+    }
+
+    nav {
         page-break-after: always;
     }
-    
+
     footer {
         page-break-before: always;
-    }
-    
-    @page :left {
-        margin: 2cm 1cm 2cm 2cm;
-    }
-    
-    @page :right {
-        margin: 2cm 2cm 2cm 1cm;
+        border: none;
+        background: transparent;
     }
 }
 

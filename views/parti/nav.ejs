@@ -1,23 +1,37 @@
 <header>
-        <h1> PC marketplace <i class="fa-solid fa-computer"></i> </h1>
+    <h1>PC marketplace <i class="fa-solid fa-computer"></i></h1>
 
-        <nav>
-            <div class="hamburger">
-    <div></div>
-    <div></div>
-    <div></div>
-</div>
-            <ul class = "meniu">
-                <li> Acasa</li>
-                        <li> <a href="#welcome">Bine ati venit </a></li>
-                        <li> <a href="#promotii">Promotii </a></li>
-                        <li> <a href="#orar"> Orar </a></li>
+    <nav>
+        <input type="checkbox" id="menu-toggle" class="menu-checkbox">
+        
+        <label for="menu-toggle" class="hamburger">
+            <span class="linie"></span>
+            <span class="linie"></span>
+            <span class="linie"></span>
+        </label>
+
+        <ul class="meniu">
+            <li class="nav-home"><a href="#welcome">Acasă</a></li>
             
-                <li> <a href="#produse"> Produse </a>
-                    <dl>
-                        </dl>
-                </li>
-                <li> Inregistrare</li>
-            </ul>
-        </nav>
-    </header>
+            <li>
+                <a href="#produse">Produse <i class="fa-solid fa-caret-down"></i></a>
+                <ul class="submeniu">
+                    <li><a href="#stoc_cpu-uri">Procesoare (CPU)</a></li>
+                    <li><a href="#stoc-laptopuri-gaming">Laptopuri Gaming</a></li>
+                    <li><a href="#stoc-laptopuri-office">Laptopuri Office</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#">Pagini <i class="fa-solid fa-caret-down"></i></a>
+                <ul class="submeniu">
+                    <li><a href="/inregistrare">Înregistrare</a></li>
+                    <li><a href="/login">Autentificare</a></li>
+                    <li><a href="/galerie">Galerie Foto</a></li>
+                </ul>
+            </li>
+
+            <li><a href="#contact-locatie">Contact</a></li>
+        </ul>
+    </nav>
+</header>
