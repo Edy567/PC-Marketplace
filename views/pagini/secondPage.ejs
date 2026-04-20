@@ -11,8 +11,21 @@
 
 <body>
     <%- include('../parti/nav.ejs')%>
-
     
+    <section id="sectiune-video">
+    <h2>Prezentare Video</h2>
+    
+    <video id="video-vtt" controls preload="metadata" poster="/resurse/imagini/poster-video.jpg">
+        
+        <source src="/resurse/video/clip.mp4" type="video/mp4">
+        
+        
+        <track src="/resurse/video/ro.vtt" kind="subtitles" srclang="ro" label="Română" default>
+        <track src="/resurse/video/en.vtt" kind="subtitles" srclang="en" label="English">
+        
+        Mesaj de rezervă: Browserul tău nu suportă elementul video.
+    </video>
+</section>
 
     <footer>
         

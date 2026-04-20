@@ -404,3 +404,71 @@ math msub mi:first-child {
     font-size: 1.4em;
     color: var(--culoare-text);
 }
+
+#video-vtt {
+    width: 100%;
+    max-width: 800px; 
+    min-width: 300px; 
+    display: block;
+    margin: 0 auto; 
+    border-radius: 8px;
+    border: 3px solid var(--culoare-border-sectiuni);
+}
+
+::cue {
+    background-color: var(--culoare-text); 
+    color: var(--culoare-back-main); 
+    font-size: 1.2rem;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+::cue(u) {
+    text-decoration: underline;
+    color: var(--culoare-accent); 
+}
+
+a:visited {
+    color: var(--culoare-vizitat);
+}
+
+a[href^="http"]::before {
+    content: "⤤ ";
+    font-size: 1.5em;
+    display: inline-block;
+    transition: color 0.3s ease;
+}
+
+a[href^="http"]:hover::before {
+    color: var(--culoare-accent);
+}
+
+main a {
+    position: relative;
+    padding: 2px 6px;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    text-decoration: none;
+    background-image: radial-gradient(
+        circle, 
+        var(--culoare-accent) 0%, 
+        var(--culoare-accent) 40%, 
+        transparent 80%, 
+        transparent 100%
+    );
+    background-position: center;
+    background-size: 0% 0%;
+    background-repeat: no-repeat;
+    transition: background-size 0.3s ease-out, border-color 0.1s ease, color 0.3s ease;
+}
+
+main a:hover {
+    background-size: 100% 100%;
+    color: var(--culoare-back-main);
+}
+
+main a:active {
+    border-color: var(--culoare-accent);
+}

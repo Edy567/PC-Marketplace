@@ -151,7 +151,7 @@ nav {
                 height: 4px;
                 background-color: var(--culoare-accent);
                 border-radius: 5px;
-                transition: transform 0.3s ease, opacity 0.3s ease;
+                transition: transform 0.3s ease, opacity 0.3s ease !important;
                 opacity: 0; 
             }
 
@@ -161,8 +161,8 @@ nav {
 
             @for $i from 1 through 3 {
                 .linie:nth-child(#{$i}) {
-                    animation: aparitie-hamburger 0.6s ease forwards;
-                    animation-delay: #{$i * 300}ms;
+                    animation: aparitie-hamburger 0.6s ease forwards !important;
+                    animation-delay: #{$i * 300}ms !important;
                 }
             }
         }
@@ -213,13 +213,13 @@ nav {
         }
 
         .menu-checkbox:checked ~ .hamburger .linie:nth-child(1) {
-            transform: translateY(10px) rotate(45deg);
+            transform: translateY(10px) rotate(45deg) !important;
         }
         .menu-checkbox:checked ~ .hamburger .linie:nth-child(2) {
-            opacity: 0;
+            opacity: 0 !important;
         }
         .menu-checkbox:checked ~ .hamburger .linie:nth-child(3) {
-            transform: translateY(-10px) rotate(-45deg);
+            transform: translateY(-10px) rotate(-45deg) !important;
         }
     }
 }
