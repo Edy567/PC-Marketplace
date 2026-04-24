@@ -4,11 +4,11 @@
            let img = imagini[i]; %>
             <figure class="item-galerie">
                 <picture>
-                    <source srcset="<%- img.cale_mica %>" media="(max-width: 800px)">
-                    <img src="<%- caleBaza %>/<%- img.cale_relativa %>" 
-                         alt="<%- img.alternativ || img.nume_imag %>" 
-                         title="<%- img.descriere_imag %>">
-                </picture>
+    <source srcset="<%- img.cale_mica %>" media="(max-width: 800px)">
+    <img src="/<%- caleBaza %>/<%- img.cale_relativa %>" 
+         alt="<%- img.alternativ %>" 
+         title="<%- img.descriere_imag %>">
+</picture>
                 <figcaption>
                     <span class="nume-img"><%- img.nume_imag %></span>
                     <p class="desc-img"><%- img.descriere_imag %></p>

@@ -64,7 +64,7 @@ async function proceseazaImagini() {
         if (!fs.existsSync(caleDestinatie)) {
             try { await sharp(caleSursa).resize(300).toFile(caleDestinatie); } catch (err) { console.error(err); }
         }
-        img.cale_mica = path.join("/", obGlobal.obImagini.cale_galerie, "mic", numeFisier);
+        img.cale_mica = "/" + obGlobal.obImagini.cale_galerie + "/mic/" + numeFisier;
     }
 }
 

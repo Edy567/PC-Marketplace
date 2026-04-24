@@ -14,6 +14,34 @@
       "alternativ": "",
       "descriere_imag": "",
       "intervale_ore": [[0, 24]]
+    },
+    {
+      "cale_relativa": "poster-video.jpg",
+      "nume_imag": "PC1",
+      "alternativ": "pc1",
+      "descriere_imag": "Setup",
+      "intervale_ore": [[0, 24]]
+    },
+    {
+      "cale_relativa": "download.jfif",
+      "nume_imag": "",
+      "alternativ": "",
+      "descriere_imag": "",
+      "intervale_ore": [[0, 24]]
+    },
+    {
+      "cale_relativa": "poster-video.jpg",
+      "nume_imag": "PC1",
+      "alternativ": "pc1",
+      "descriere_imag": "Setup",
+      "intervale_ore": [[0, 24]]
+    },
+    {
+      "cale_relativa": "download.jfif",
+      "nume_imag": "",
+      "alternativ": "",
+      "descriere_imag": "",
+      "intervale_ore": [[0, 24]]
     }
   ]
 }
